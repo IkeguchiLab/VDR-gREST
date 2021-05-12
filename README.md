@@ -20,4 +20,4 @@ Agonist-MD      Antagonist-5b-gREST  Antagonist-MD      Apo-gREST         Partia
 - [`Crystal-CoA-MD/`](Crystal-CoA-MD): This folder contains input files for cMD simulaitons from the crystal structure.
 - [`Submit-files/`](Submit-files): This folder contains job script files for cMD/gREST simulations.
 
-For gREST simulations, the toppar files of CHARMM force fields are required. The toppar files can be downloaded from http://mackerell.umaryland.edu/charmm_ff.shtml .
+For gREST simulations, the toppar files of the CHARMM force field are required. The toppar files of the CHARMM force field can be downloaded from http://mackerell.umaryland.edu/charmm_ff.shtml .

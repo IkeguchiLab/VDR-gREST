@@ -13,7 +13,6 @@ The conventional MD (cMD) simulations were performed using GROMACS version 2016.
 - [`Apo-gREST/`](Apo-gREST): This folder contains input files for gREST simulaitons of apo structure.
 - [`Agonist-CoA-MD/`](Agonist-CoA-MD): This folder contains input files for cMD simulaitons of agonist/CoA complex.
 - [`Antagonist-CoA-MD/`](Antagonist-CoA-MD): This folder contains input files for cMD simulaitons of antagonist/CoA complex.
-- [`Agonist-CoA-MD/`](Agonist-CoA-MD): This folder contains input files for cMD simulaitons of agonist/CoA complex.
 - [`Crystal-CoA-MD/`](Crystal-CoA-MD): This folder contains input files for cMD simulaitons from the crystal structure.
 - [`Submit-files/`](Submit-files): This folder contains job script files for cMD/gREST simulations.
 

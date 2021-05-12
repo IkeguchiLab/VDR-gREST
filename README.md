@@ -1,5 +1,5 @@
 # VDR-gREST
-Supporting Information for a paper describing gREST simulations for VDR-LBD.
+Supporting Information for a paper describing gREST/MD simulations for VDR-LBD.
 
 The gREST simulations were performed using GENESIS version xxx.
 The conventional MD (cMD) simulations were performed using GROMACS version 2016.3.
@@ -20,4 +20,4 @@ Agonist-MD      Antagonist-5b-gREST  Antagonist-MD      Apo-gREST         Partia
 - [`Crystal-CoA-MD/`](Crystal-CoA-MD): This folder contains input files for cMD simulaitons from the crystal structure.
 - [`Submit-files/`](Submit-files): This folder contains job script files for cMD/gREST simulations.
 
-In the directories of gREST simulations, toppar files of CHARMM force fields should be downloaded from xxxx and extracted. 
+For gREST simulations, the toppar files of CHARMM force fields are required. The toppar files can be downloaded from http://mackerell.umaryland.edu/charmm_ff.shtml .

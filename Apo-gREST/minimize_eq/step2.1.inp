@@ -1,0 +1,48 @@
+[INPUT]
+topfile = ../toppar/top_all36_prot.rtf, ../toppar/top_all36_cgenff.rtf
+parfile = ../toppar/par_all36_prot.prm, ../toppar/par_all36_cgenff.prm
+strfile = ../toppar/toppar_water_ions.str
+psffile = ../step3_pbcsetup.psf       # protein structure file
+pdbfile = ../step3_pbcsetup.pdb                 # PDB file
+reffile = ../step3_pbcsetup.pdb
+
+[OUTPUT]
+#dcdfile    = step2.1.dcd   # DCD trajectory file
+rstfile    = step2.1.rst   # restart file
+
+[ENERGY]
+forcefield       = CHARMM   # CHARMM force field
+electrostatic    = PME      # Particle Mesh Ewald method
+switchdist       = 10.0     # switch distance
+cutoffdist       = 12.0     # cutoff distance
+pairlistdist     = 13.5     # pair-list distance
+vdw_force_switch = YES      # force switch option for van der Waals
+pme_nspline      = 4        # order of B-spline in [PME]
+pme_max_spacing  = 1.0      # max grid spacing 
+contact_check    = YES      # avoid calculation failure due to atomic crash
+ 
+[MINIMIZE]
+method           = SD       # Steepest descent method
+nsteps           = 2000     # number of minimization steps
+eneout_period    =  100     # energy output period
+#crdout_period    =  100     # coordinates output period
+rstout_period    = 2000     # restart output period
+nbupdate_period  =   10     # nonbond update period
+ 
+[BOUNDARY]
+type             = PBC      # periodic boundary condition
+box_size_x      = 82
+box_size_y      = 82
+box_size_z      = 82 
+
+
+[SELECTION]
+group1          = (sid:PROA) and not hydrogen
+#group2          = (sid:HETA) and not hydrogen
+
+[RESTRAINTS]
+nfunctions      = 1
+function1       = POSI
+constant1       = 1
+select_index1   = 1
+

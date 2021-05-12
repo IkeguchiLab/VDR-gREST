@@ -1,0 +1,57 @@
+[INPUT]
+topfile = ../toppar/top_all36_prot.rtf, ../toppar/top_all36_cgenff.rtf, ../jb1/jb1_g.rtf
+parfile = ../toppar/par_all36_prot.prm, ../toppar/par_all36_cgenff.prm, ../jb1/jb1.prm
+strfile = ../toppar/toppar_water_ions.str
+psffile = ../step3_pbcsetup.xplor.ext.psf       # protein structure file
+pdbfile = ../step3_pbcsetup.pdb                 # PDB file
+reffile = ../step3_pbcsetup.pdb
+rstfile = ../equilibration/step3_rep{}.rst   # restart file
+
+[OUTPUT]
+dcdfile  = step4_1_rep{}.dcd       # DCD trajectory file
+rstfile  = step4_1_rep{}.rst       # restart file
+remfile  = step4_1_rep{}.rem       # replica exchange ID file
+logfile  = step4_1_rep{}.log       # log file of each replica
+
+[REMD]
+dimension        = 1           # number of parameter types
+exchange_period  = 1000        # NO exchange for equilibration
+iseed            = 3141592
+
+type1            = REST
+nreplica1        = 6           # number of replicas
+parameters1      = 300.00 340.00 390.00 450.00 520.00 600.00
+select_index1    = 1
+param_type1      = DIHEDRAL CMAP LJ
+
+[SELECTION]
+group1           = rno:396-423 and segid:PROA
+
+[ENERGY]
+forcefield       = CHARMM    # CHARMM force field
+electrostatic    = PME       # Particle Mesh Ewald method
+switchdist       = 10.0      # switch distance
+cutoffdist       = 12.0      # cutoff distance
+pairlistdist     = 13.5      # pair-list distance
+vdw_force_switch = YES       # force switch option for van der Waals
+
+[DYNAMICS]
+integrator       = LEAP      # leapfrog Verlet integrator
+nsteps           =  10000000     # number of MD steps
+timestep         = 0.002     # timestep (ps)
+eneout_period    =  10     # energy output period
+crdout_period    =  500     # coordinates output period
+rstout_period    =  1000     # restart output period
+nbupdate_period  =    10     # nonbond update period
+
+[CONSTRAINTS]
+rigid_bond       = YES       # constraints all bonds involving hydrogen
+
+[ENSEMBLE]
+ensemble         = NPT       # NPT ensemble
+tpcontrol        = LANGEVIN  # thermostat and barostat
+temperature      = 300.00    # initial and target temperature (K)
+gamma_t          = 1.0       # thermostat friction (ps-1) in [LANGEVIN]
+
+[BOUNDARY]
+type             = PBC       # periodic boundary condition

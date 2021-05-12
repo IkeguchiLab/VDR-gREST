@@ -1,0 +1,63 @@
+[INPUT]
+topfile = ../toppar/top_all36_prot.rtf, ../toppar/top_all36_cgenff.rtf, ../vdx/vdx_g.rtf 
+parfile = ../toppar/par_all36_prot.prm, ../toppar/par_all36_cgenff.prm, ../vdx/vdx.prm 
+strfile = ../toppar/toppar_water_ions.str
+psffile = ../step3_pbcsetup.xplor.ext.psf       # protein structure file
+pdbfile = ../step3_pbcsetup.pdb                 # PDB file
+reffile = ../step3_pbcsetup.pdb
+rstfile = step2.2.rst                       # restart file
+
+[OUTPUT]
+#dcdfile  = step2.3.dcd       # DCD trajectory file
+rstfile  = step2.3.rst       # restart file
+
+[ENERGY]
+forcefield       = CHARMM    # CHARMM force field
+electrostatic    = PME       # Particle Mesh Ewald method
+switchdist       = 10.0      # switch distance
+cutoffdist       = 12.0      # cutoff distance
+pairlistdist     = 13.5      # pair-list distance
+vdw_force_switch = YES       # force switch option for van der Waals
+pme_nspline      = 4         # order of B-spline in [PME]
+pme_max_spacing  = 1.0       # max grid spacing
+
+[DYNAMICS]
+integrator       = LEAP      # leapfrog Verlet integrator
+nsteps           =  50000     # number of MD steps
+timestep         = 0.002     # timestep (ps)
+eneout_period    =    10     # energy output period
+#crdout_period    =   100     # coordinates output period
+rstout_period    =  5000     # restart output period
+nbupdate_period  =    10     # nonbond update period
+
+[CONSTRAINTS]
+rigid_bond       = YES       # constraints all bonds involving hydrogen
+
+[ENSEMBLE]
+ensemble         = NPT       # NPT ensemble
+tpcontrol        = LANGEVIN  # thermostat and barostat
+temperature      = 300.00    # initial and target temperature (K)
+pressure         = 1.0       # initial and target pressure (atm)
+isotropy         = ISO       # isotropic pressure coupling
+
+[BOUNDARY]
+type             = PBC       # periodic boundary condition
+
+
+[SELECTION]
+group1          = (sid:PROA) and not hydrogen
+#group2          = (sid:PROA) and not backbone and not hydrogen
+group2          = (sid:HETA) and not hydrogen
+
+[RESTRAINTS]
+nfunctions      = 2
+function1       = POSI
+constant1       = 1
+select_index1   = 1
+function2       = POSI
+constant2       = 1
+select_index2   = 2
+#function3       = POSI
+#constant3       = 1
+#select_index3   = 3
+

@@ -1,11 +1,8 @@
 # VDR-gREST
 Supporting Information for a paper describing gREST/MD simulations for VDR-LBD.
 
-The gREST simulations were performed using GENESIS version xxx.
+The gREST simulations were performed using GENESIS version 1.3.0.
 The conventional MD (cMD) simulations were performed using GROMACS version 2016.3.
-
-Agonist-CoA-MD  Agonist-gREST        Antagonist-CoA-MD  Antagonist-gREST  Crystal-CoA-MD         Submit-files
-Agonist-MD      Antagonist-5b-gREST  Antagonist-MD      Apo-gREST         Partial-Agonist-gREST
 
 - [`Agonist-MD/`](Agonist-MD): This folder contains input files for cMD simulaitons of agonist complex.
 - [`Antagonist-MD/`](Antagonist-MD): This folder contains input files for cMD simulaitons of antagonist complex.
